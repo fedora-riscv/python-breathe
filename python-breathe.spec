@@ -17,7 +17,7 @@ Source0:        https://github.com/%{owner}/%{srcname}/archive/%{commit0}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  doxygen
-BuildRequires:  python2-devel python3-devel
+BuildRequires:  python2-devel python%{python3_pkgversion}-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-six
 BuildRequires:  python-sphinx
@@ -42,11 +42,11 @@ Obsoletes:      %{srcname} < %{version}-%{release}
 
 %description -n python2-%{srcname} %_description
 
-%package -n     python3-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{srcname}}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-%description -n python3-%{srcname} %_description
+%description -n python%{python3_pkgversion}-%{srcname} %_description
 
 %package        doc
 Summary:        Documentation files for %{srcname}
@@ -75,7 +75,7 @@ rm documentation/build/html/.buildinfo
 %{python2_sitelib}/*
 %license LICENSE
 
-%files -n python3-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %{_bindir}/breathe-apidoc
 %{python3_sitelib}/*
 %license LICENSE
