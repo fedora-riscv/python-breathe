@@ -18,14 +18,12 @@ BuildArch:      noarch
 
 BuildRequires:  doxygen
 BuildRequires:  python2-devel python%{python3_pkgversion}-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-six
+BuildRequires:  python-setuptools python%{python3_pkgversion}-setuptools
+BuildRequires:  python-six python%{python3_pkgversion}-six
 BuildRequires:  python-sphinx
 # NOTE: git is only needed because part of the build process checks if it's in
 # a git repo
 BuildRequires:  git
-
-Requires:  python-six
 
 # Set the name of the documentation directory
 %global _docdir_fmt %{name}
@@ -34,6 +32,7 @@ Requires:  python-six
 
 %package -n     python2-%{srcname}
 Summary:        %{summary}
+Requires:       python-six
 %{?python_provide:%python_provide python2-%{srcname}}
 
 # This package replaces the old version packaged as just breathe
@@ -44,6 +43,7 @@ Obsoletes:      %{srcname} < %{version}-%{release}
 
 %package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
+Requires:       python%{python3_pkgversion}-six
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 %description -n python%{python3_pkgversion}-%{srcname} %_description
