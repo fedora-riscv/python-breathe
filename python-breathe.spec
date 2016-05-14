@@ -7,12 +7,13 @@ render the Doxygen xml output.
 
 Name:           python-%{srcname}
 Version:        4.2.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
 URL:            https://github.com/%{owner}/%{srcname}
 Source0:        https://github.com/%{owner}/%{srcname}/archive/%{commit0}.tar.gz#/%{srcname}-%{commit0}.tar.gz
+Patch0:         breathe_python3.patch
 
 BuildArch:      noarch
 
@@ -57,7 +58,7 @@ License:        BSD and zlib
 This package contains documentation for developer documentation for %{srcname}.
 
 %prep
-%autosetup -n %{srcname}-%{commit0}
+%autosetup -n %{srcname}-%{commit0} -p1
 
 %build
 %py2_build
@@ -85,6 +86,9 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Fri May 13 2016 Dave Johansen <davejohansen@gmail.com> - 4.2.0-3
+- Fix for Python 3
+
 * Sun Apr 10 2016 Orion Poplawski <orion@cora.nwra.com> - 4.2.0-2
 - Fix BR/Rs
 
