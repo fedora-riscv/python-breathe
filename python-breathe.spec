@@ -1,19 +1,18 @@
 %global owner michaeljones
-%global commit0 a423389dfe2935962b3b27586602cfc3521fb54a
+%global commit0 3375ea3c582e190fa08f5cfbd5eea8d68492ac75
 %global srcname breathe
 %global _description \
 Breathe is an extension to reStructuredText and Sphinx to be able to read and \
 render the Doxygen xml output.
 
 Name:           python-%{srcname}
-Version:        4.2.0
-Release:        5%{?dist}
+Version:        4.4.0
+Release:        1%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
 URL:            https://github.com/%{owner}/%{srcname}
 Source0:        https://github.com/%{owner}/%{srcname}/archive/%{commit0}.tar.gz#/%{srcname}-%{commit0}.tar.gz
-Patch0:         breathe_python3.patch
 
 BuildArch:      noarch
 
@@ -86,6 +85,9 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Mon Dec 19 2016 Dave Johansen <davejohansen@gmail.com> - 4.4.0-1
+- Upstream release
+
 * Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 4.2.0-5
 - Rebuild for Python 3.6
 
