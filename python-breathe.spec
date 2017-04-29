@@ -1,13 +1,13 @@
 %global owner michaeljones
-%global commit0 3375ea3c582e190fa08f5cfbd5eea8d68492ac75
+%global commit0 3ba9c2046322415ef8933654395c84de896ac7b7
 %global srcname breathe
 %global _description \
 Breathe is an extension to reStructuredText and Sphinx to be able to read and \
 render the Doxygen xml output.
 
 Name:           python-%{srcname}
-Version:        4.4.0
-Release:        3%{?dist}
+Version:        4.6.0
+Release:        1%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -85,6 +85,9 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Sat Apr 29 2017 Miro Hrončok <mhroncok@redhat.com> - 4.6.0-1
+- Upstream update
+
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 4.4.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
