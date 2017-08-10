@@ -1,19 +1,18 @@
 %global owner michaeljones
-%global commit0 3ba9c2046322415ef8933654395c84de896ac7b7
+%global commit0 5bbf647bb222d1d26351dc4ff808ede03f750705
 %global srcname breathe
 %global _description \
 Breathe is an extension to reStructuredText and Sphinx to be able to read and \
 render the Doxygen xml output.
 
 Name:           python-%{srcname}
-Version:        4.6.0
-Release:        3%{?dist}
+Version:        4.7.0
+Release:        1%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
 URL:            https://github.com/%{owner}/%{srcname}
 Source0:        https://github.com/%{owner}/%{srcname}/archive/%{commit0}.tar.gz#/%{srcname}-%{commit0}.tar.gz
-Patch0:         python-breathe_node_without_parent.patch
 
 BuildArch:      noarch
 
@@ -86,6 +85,9 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Wed Aug 09 2017 Dave Johansen <davejohansen@gmail.com> - 4.7.0-1
+- Upstream update
+
 * Sat Aug 05 2017 Dave Johansen <davejohansen@gmail.com> - 4.6.0-3
 - Fix for node without parent
 
