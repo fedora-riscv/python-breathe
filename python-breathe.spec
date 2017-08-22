@@ -1,5 +1,4 @@
 %global owner michaeljones
-%global commit0 c60e46ef189af6cb3bab918a87236dabfe1ecb53
 %global srcname breathe
 %global _description \
 Breathe is an extension to reStructuredText and Sphinx to be able to read and \
@@ -12,7 +11,7 @@ Summary:        Adds support for Doxygen xml output to reStructuredText and Sphi
 
 License:        BSD
 URL:            https://github.com/%{owner}/%{srcname}
-Source0:        https://github.com/%{owner}/%{srcname}/archive/%{commit0}.tar.gz#/%{srcname}-%{commit0}.tar.gz
+Source0:        https://github.com/%{owner}/%{srcname}/archive/v%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -57,7 +56,7 @@ License:        BSD and zlib
 This package contains documentation for developer documentation for %{srcname}.
 
 %prep
-%autosetup -n %{srcname}-%{commit0} -p1
+%autosetup -n %{srcname}-%{version}
 
 %build
 %py2_build
