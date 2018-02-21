@@ -6,7 +6,7 @@ render the Doxygen xml output.
 
 Name:           python-%{srcname}
 Version:        4.7.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -17,9 +17,9 @@ BuildArch:      noarch
 
 BuildRequires:  doxygen
 BuildRequires:  python2-devel python%{python3_pkgversion}-devel
-BuildRequires:  python-setuptools python%{python3_pkgversion}-setuptools
-BuildRequires:  python-six python%{python3_pkgversion}-six
-BuildRequires:  python-sphinx
+BuildRequires:  python2-setuptools python%{python3_pkgversion}-setuptools
+BuildRequires:  python2-six python%{python3_pkgversion}-six
+BuildRequires:  python2-sphinx
 # NOTE: git is only needed because part of the build process checks if it's in
 # a git repo
 BuildRequires:  git
@@ -31,7 +31,7 @@ BuildRequires:  git
 
 %package -n     python2-%{srcname}
 Summary:        %{summary}
-Requires:       python-six
+Requires:       python2-six
 %{?python_provide:%python_provide python2-%{srcname}}
 
 # This package replaces the old version packaged as just breathe
@@ -84,6 +84,10 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Wed Feb 21 2018 Iryna Shcherbina <ishcherb@redhat.com> - 4.7.3-3
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.7.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
