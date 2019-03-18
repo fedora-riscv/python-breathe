@@ -6,7 +6,7 @@ render the Doxygen xml output.
 
 Name:           python-%{srcname}
 Version:        4.7.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -16,10 +16,10 @@ Source0:        https://github.com/%{owner}/%{srcname}/archive/v%{version}.tar.g
 BuildArch:      noarch
 
 BuildRequires:  doxygen
-BuildRequires:  python2-devel python%{python3_pkgversion}-devel
-BuildRequires:  python2-setuptools python%{python3_pkgversion}-setuptools
-BuildRequires:  python2-six python%{python3_pkgversion}-six
-BuildRequires:  python2-sphinx
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-six
+BuildRequires:  python%{python3_pkgversion}-sphinx
 # NOTE: git is only needed because part of the build process checks if it's in
 # a git repo
 BuildRequires:  git
@@ -28,17 +28,6 @@ BuildRequires:  git
 %global _docdir_fmt %{name}
 
 %description %_description
-
-%package -n     python2-%{srcname}
-Summary:        %{summary}
-Requires:       python2-six
-%{?python_provide:%python_provide python2-%{srcname}}
-
-# This package replaces the old version packaged as just breathe
-Provides:       %{srcname} = %{version}-%{release}
-Obsoletes:      %{srcname} < %{version}-%{release}
-
-%description -n python2-%{srcname} %_description
 
 %package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
@@ -59,7 +48,6 @@ This package contains documentation for developer documentation for %{srcname}.
 %autosetup -n %{srcname}-%{version}
 
 %build
-%py2_build
 %py3_build
 # Build the documentation
 make %{?_smp_mflags} html
@@ -67,12 +55,7 @@ make %{?_smp_mflags} html
 rm documentation/build/html/.buildinfo
 
 %install
-%py2_install
 %py3_install
-
-%files -n python2-%{srcname}
-%{python2_sitelib}/*
-%license LICENSE
 
 %files -n python%{python3_pkgversion}-%{srcname}
 %{_bindir}/breathe-apidoc
@@ -84,6 +67,10 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Mon Mar 18 2019 Miro Hrončok <mhroncok@redhat.com> - 4.7.3-7
+- Subpackage python2-breathe has been removed
+  See https://fedoraproject.org/wiki/Changes/Mass_Python_2_Package_Removal
+
 * Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.7.3-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
