@@ -36,13 +36,13 @@ Requires:       python%{python3_pkgversion}-six
 
 %description -n python%{python3_pkgversion}-%{srcname} %_description
 
-#package        doc
-#Summary:        Documentation files for %%{srcname}
+%package        doc
+Summary:        Documentation files for %{srcname}
 # tinyxml uses zlib license
-#License:        BSD and zlib
+License:        BSD and zlib
 
-#description    doc
-#This package contains documentation for developer documentation for %%{srcname}.
+%description    doc
+This package contains documentation for developer documentation for %{srcname}.
 
 %prep
 %autosetup -n %{srcname}-%{version}
@@ -50,9 +50,9 @@ Requires:       python%{python3_pkgversion}-six
 %build
 %py3_build
 # Build the documentation
-#make %%{?_smp_mflags} html
+make %{?_smp_mflags} html
 # Remove temporary build files
-#rm documentation/build/html/.buildinfo
+rm documentation/build/html/.buildinfo
 
 %install
 %py3_install
@@ -62,9 +62,9 @@ Requires:       python%{python3_pkgversion}-six
 %{python3_sitelib}/*
 %license LICENSE
 
-#files doc
-#doc documentation/build/html
-#license LICENSE
+%files doc
+%doc documentation/build/html
+%license LICENSE
 
 %changelog
 * Mon Mar 18 2019 Miro Hrončok <mhroncok@redhat.com> - 4.7.3-7
