@@ -5,8 +5,8 @@ Breathe is an extension to reStructuredText and Sphinx to be able to read and \
 render the Doxygen xml output.
 
 Name:           python-%{srcname}
-Version:        4.7.3
-Release:        7%{?dist}
+Version:        4.13.0.post0
+Release:        1%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -67,6 +67,9 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Mon Jul 15 2019 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.13.0.post0-1
+- New upstream release 4.13.0.post0
+
 * Mon Mar 18 2019 Miro Hrončok <mhroncok@redhat.com> - 4.7.3-7
 - Subpackage python2-breathe has been removed
   See https://fedoraproject.org/wiki/Changes/Mass_Python_2_Package_Removal
