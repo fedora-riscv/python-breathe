@@ -5,8 +5,8 @@ Breathe is an extension to reStructuredText and Sphinx to be able to read and \
 render the Doxygen xml output.
 
 Name:           python-%{srcname}
-Version:        4.7.3
-Release:        5%{?dist}
+Version:        4.11.1
+Release:        1%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -18,8 +18,12 @@ BuildArch:      noarch
 BuildRequires:  doxygen
 BuildRequires:  python2-devel python%{python3_pkgversion}-devel
 BuildRequires:  python2-setuptools python%{python3_pkgversion}-setuptools
-BuildRequires:  python2-six python%{python3_pkgversion}-six
-BuildRequires:  python2-sphinx
+BuildRequires:  python2-six >= 1.4
+BuildRequires:  python%{python3_pkgversion}-six >= 1.4
+BuildRequires:  python2-sphinx >= 1.4
+BuildRequires:  python2-docutils >= 0.5
+BuildRequires:  python%{python3_pkgversion}-docutils >= 0.5
+BuildRequires:  python2-nose
 # NOTE: git is only needed because part of the build process checks if it's in
 # a git repo
 BuildRequires:  git
@@ -32,6 +36,7 @@ BuildRequires:  git
 %package -n     python2-%{srcname}
 Summary:        %{summary}
 Requires:       python2-six
+Requires:       doxygen
 %{?python_provide:%python_provide python2-%{srcname}}
 
 # This package replaces the old version packaged as just breathe
@@ -43,6 +48,7 @@ Obsoletes:      %{srcname} < %{version}-%{release}
 %package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-six
+Requires:       doxygen
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 %description -n python%{python3_pkgversion}-%{srcname} %_description
@@ -70,20 +76,28 @@ rm documentation/build/html/.buildinfo
 %py2_install
 %py3_install
 
+%check
+make dev-test
+
 %files -n python2-%{srcname}
 %{python2_sitelib}/*
 %license LICENSE
+%doc README.rst
 
 %files -n python%{python3_pkgversion}-%{srcname}
 %{_bindir}/breathe-apidoc
 %{python3_sitelib}/*
 %license LICENSE
+%doc README.rst
 
 %files doc
 %doc documentation/build/html
 %license LICENSE
 
 %changelog
+* Thu Aug 29 2019 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.11.1-1
+- New upstream release 4.11.1
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.7.3-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
