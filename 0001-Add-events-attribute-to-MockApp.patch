@@ -1,0 +1,25 @@
+From a1e7ba3a69aa9b4974ae706fe4ae69c570d169c5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dan.cermak@cgc-instruments.com>
+Date: Wed, 28 Aug 2019 23:12:21 +0200
+Subject: [PATCH] Add events attribute to MockApp
+
+This fixes test failures with Sphinx 2.1.2
+---
+ tests/test_renderer.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_renderer.py b/tests/test_renderer.py
+index 7fd2b98..f0348d8 100644
+--- a/tests/test_renderer.py
++++ b/tests/test_renderer.py
+@@ -77,6 +77,7 @@ class MockApp(object):
+         self.config.add('cpp_paren_attributes', [], 'env', ())
+         self.config.add('cpp_index_common_prefix', [], 'env', ())
+         self.registry = MockRegistry()
++        self.events = None
+ 
+     def add_node(self, node):
+         if not docutils.is_node_registered(node):
+-- 
+2.21.0
+

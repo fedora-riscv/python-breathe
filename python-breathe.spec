@@ -5,21 +5,24 @@ Breathe is an extension to reStructuredText and Sphinx to be able to read and \
 render the Doxygen xml output.
 
 Name:           python-%{srcname}
-Version:        4.13.0.post0
-Release:        3%{?dist}
+Version:        4.13.1
+Release:        1%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
 URL:            https://github.com/%{owner}/%{srcname}
 Source0:        https://github.com/%{owner}/%{srcname}/archive/v%{version}.tar.gz
+Patch0:         0001-Add-events-attribute-to-MockApp.patch
 
 BuildArch:      noarch
 
-BuildRequires:  doxygen
+BuildRequires:  doxygen >= 1.8.4
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-six
-BuildRequires:  python%{python3_pkgversion}-sphinx
+BuildRequires:  %{py3_dist six} >= 1.9
+BuildRequires:  %{py3_dist Sphinx} >= 2.0
+BuildRequires:  %{py3_dist docutils} >= 0.12
+BuildRequires:  %{py3_dist nose}
 # NOTE: git is only needed because part of the build process checks if it's in
 # a git repo
 BuildRequires:  git
@@ -32,6 +35,7 @@ BuildRequires:  git
 %package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-six
+Requires:       doxygen >= 1.8.4
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 %description -n python%{python3_pkgversion}-%{srcname} %_description
@@ -45,19 +49,23 @@ License:        BSD and zlib
 This package contains documentation for developer documentation for %{srcname}.
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -p 1 -n %{srcname}-%{version}
 
 %build
 %py3_build
 # Build the documentation
-make %{?_smp_mflags} html
+make %{?_smp_mflags} DOXYGEN=$(which doxygen) html
 # Remove temporary build files
 rm documentation/build/html/.buildinfo
 
 %install
 %py3_install
 
+%check
+make dev-test
+
 %files -n python%{python3_pkgversion}-%{srcname}
+%doc README.rst
 %{_bindir}/breathe-apidoc
 %{python3_sitelib}/*
 %license LICENSE
@@ -67,6 +75,10 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Wed Aug 28 2019 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.13.1-1
+- New upstream release 4.13.1
+- Enable test run in %%check
+
 * Mon Aug 19 2019 Miro Hrončok <mhroncok@redhat.com> - 4.13.0.post0-3
 - Rebuilt for Python 3.8
 
