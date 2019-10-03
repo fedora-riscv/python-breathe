@@ -6,7 +6,7 @@ render the Doxygen xml output.
 
 Name:           python-%{srcname}
 Version:        4.13.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -75,6 +75,9 @@ make dev-test
 %license LICENSE
 
 %changelog
+* Thu Oct 03 2019 Miro Hrončok <mhroncok@redhat.com> - 4.13.1-2
+- Rebuilt for Python 3.8.0rc1 (#1748018)
+
 * Wed Aug 28 2019 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.13.1-1
 - New upstream release 4.13.1
 - Enable test run in %%check
