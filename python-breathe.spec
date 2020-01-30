@@ -6,7 +6,7 @@ render the Doxygen xml output.
 
 Name:           python-%{srcname}
 Version:        4.14.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -74,6 +74,9 @@ make dev-test
 %license LICENSE
 
 %changelog
+* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.14.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Tue Nov 26 2019 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.14.0-1
 - New upstream release 4.14.0
 
