@@ -6,12 +6,14 @@ render the Doxygen xml output.
 
 Name:           python-%{srcname}
 Version:        4.19.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
 URL:            https://github.com/%{owner}/%{srcname}
 Source0:        %{URL}/archive/v%{version}.tar.gz
+# allows sphinx 3.2
+Patch0:         https://github.com/michaeljones/breathe/commit/8d07f406105c8196ac01519c770dd87c09d54465.patch
 
 BuildArch:      noarch
 
@@ -19,7 +21,7 @@ BuildRequires:  doxygen >= 1.8.4
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  %{py3_dist six} >= 1.9
-BuildRequires:  (%{py3_dist Sphinx} >= 3.0 and %{py3_dist Sphinx} < 3.2)
+BuildRequires:  (%{py3_dist Sphinx} >= 3.0 and %{py3_dist Sphinx} < 3.3)
 BuildRequires:  %{py3_dist docutils} >= 0.12
 BuildRequires:  %{py3_dist pytest}
 # NOTE: git is only needed because part of the build process checks if it's in
@@ -48,7 +50,7 @@ License:        BSD and zlib
 This package contains documentation for developer documentation for %{srcname}.
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version} -p1
 
 %build
 %py3_build
@@ -74,6 +76,9 @@ make dev-test
 %license LICENSE
 
 %changelog
+* Thu Aug 20 2020 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.19.2-3
+- Add patch to add support for sphinx 3.2
+
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.19.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 

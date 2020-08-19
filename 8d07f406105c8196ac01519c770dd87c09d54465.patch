@@ -1,0 +1,34 @@
+From 8d07f406105c8196ac01519c770dd87c09d54465 Mon Sep 17 00:00:00 2001
+From: Jakob Lykke Andersen <Jakob@caput.dk>
+Date: Sun, 2 Aug 2020 15:36:28 +0200
+Subject: [PATCH] Allow Sphinx 3.2
+
+---
+ requirements/production.txt | 2 +-
+ setup.py                    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/requirements/production.txt b/requirements/production.txt
+index cdfe658e..c6f74e00 100644
+--- a/requirements/production.txt
++++ b/requirements/production.txt
+@@ -2,5 +2,5 @@ docutils>=0.12
+ Jinja2>=2.7.3
+ MarkupSafe>=0.23
+ Pygments>=1.6
+-Sphinx>=3.0,<3.2
++Sphinx>=3.0,<3.3
+ six>=1.9.0
+diff --git a/setup.py b/setup.py
+index a8f2a71b..4dc7fd20 100644
+--- a/setup.py
++++ b/setup.py
+@@ -15,7 +15,7 @@
+  render `Doxygen <http://www.doxygen.org>`__ xml output.
+ '''
+ 
+-requires = ['Sphinx>=3.0,<3.2', 'docutils>=0.12', 'six>=1.9']
++requires = ['Sphinx>=3.0,<3.3', 'docutils>=0.12', 'six>=1.9']
+ 
+ if sys.version_info < (3, 5):
+     print('ERROR: Sphinx requires at least Python 3.5 to run.')
