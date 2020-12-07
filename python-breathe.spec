@@ -25,6 +25,7 @@ BuildRequires:  %{py3_dist pytest}
 # NOTE: git is only needed because part of the build process checks if it's in
 # a git repo
 BuildRequires:  git
+BuildRequires:  make
 
 # Set the name of the documentation directory
 %global _docdir_fmt %{name}
@@ -53,7 +54,7 @@ This package contains documentation for developer documentation for %{srcname}.
 %build
 %py3_build
 # Build the documentation
-make %{?_smp_mflags} DOXYGEN=$(which doxygen) html
+%make_build DOXYGEN=$(which doxygen) html
 # Remove temporary build files
 rm documentation/build/html/.buildinfo
 
@@ -61,7 +62,7 @@ rm documentation/build/html/.buildinfo
 %py3_install
 
 %check
-make dev-test
+%make_build dev-test
 
 %files -n python%{python3_pkgversion}-%{srcname}
 %doc README.rst
