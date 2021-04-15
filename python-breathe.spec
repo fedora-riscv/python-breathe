@@ -5,17 +5,13 @@ Breathe is an extension to reStructuredText and Sphinx to be able to read and \
 render the Doxygen xml output.
 
 Name:           python-%{srcname}
-Version:        4.27.0
-Release:        2%{?dist}
+Version:        4.29.0
+Release:        1%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
 URL:            https://github.com/%{owner}/%{srcname}
 Source0:        %{URL}/archive/v%{version}.tar.gz
-
-# Fix an IndexError when generating toctree
-# Backported from upstream: https://github.com/michaeljones/breathe/pull/647
-Patch0:         fix-IndexError-when-generating-toctree.patch
 
 BuildArch:      noarch
 
@@ -79,6 +75,10 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Thu Apr 15 2021 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.29.0-1
+- New upstream release 4.29.0
+- Fixes rhbz#1944821
+
 * Wed Mar 10 2021 Charalampos Stratakis <cstratak@redhat.com> - 4.27.0-2
 - Fix an IndexError when generating toctree (rhbz#1930910)
 
