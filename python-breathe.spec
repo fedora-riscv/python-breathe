@@ -6,7 +6,7 @@ render the Doxygen xml output.
 
 Name:           python-%{srcname}
 Version:        4.29.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -79,6 +79,9 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 4.29.1-2
+- Rebuilt for Python 3.10
+
 * Sat Apr 24 2021 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.29.1-1
 - New upstream release 4.29.1
 - Fixes rhbz#1953104
