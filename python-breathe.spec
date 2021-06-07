@@ -58,7 +58,7 @@ This package contains documentation for developer documentation for %{srcname}.
 %build
 %py3_build
 # Build the documentation
-%make_build DOXYGEN=$(which doxygen) html
+%make_build DOXYGEN=$(which doxygen) PYTHONPATH=$(pwd) html
 # Remove temporary build files
 rm documentation/build/html/.buildinfo
 
