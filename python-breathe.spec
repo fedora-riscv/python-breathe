@@ -5,8 +5,8 @@ Breathe is an extension to reStructuredText and Sphinx to be able to read and \
 render the Doxygen xml output.
 
 Name:           python-%{srcname}
-Version:        4.29.1
-Release:        2%{?dist}
+Version:        4.30.0
+Release:        1%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -79,6 +79,10 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Sat Jun 12 2021 Dan Čermák <dan.cermak@cgc-instruments.com> - 4.30.0-1
+- New upstream release 4.30.0
+- Fixes rhbz#1955833
+
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 4.29.1-2
 - Rebuilt for Python 3.10
 
