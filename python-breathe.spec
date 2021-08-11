@@ -14,6 +14,7 @@ URL:            https://github.com/%{owner}/%{srcname}
 Source0:        %{URL}/archive/v%{version}.tar.gz
 Source1:        %{URL}/releases/download/v%{version}/%{srcname}-%{version}.tar.gz.sig
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8aed58021feacdd5f27ba0e6a72f627716ea9d96#./vermware.key
+Patch0:         0001-Handle-parsing-errors.patch
 
 BuildArch:      noarch
 
