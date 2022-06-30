@@ -23,6 +23,9 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  %{py3_dist six} >= 1.9
 BuildRequires:  (%{py3_dist Sphinx} >= 3.0 and %{py3_dist Sphinx} < 5)
 BuildRequires:  %{py3_dist docutils} >= 0.12
+BuildRequires:  %{py3_dist Jinja2} >= 2.7.3
+BuildRequires:  %{py3_dist MarkupSafe} >= 0.23
+BuildRequires:  %{py3_dist Pygments} >= 1.6
 BuildRequires:  %{py3_dist pytest}
 # NOTE: git is only needed because part of the build process checks if it's in
 # a git repo
