@@ -21,8 +21,12 @@ BuildRequires:  doxygen >= 1.8.4
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  %{py3_dist six} >= 1.9
+%if 0%{?rhel}
+BuildRequires:  %{py3_dist Sphinx}
+%else
 # Sphinx>=4.0,<6,!=5.0.0
 BuildRequires:  ((%{py3_dist Sphinx} >= 4.0 and %{py3_dist Sphinx} < 5.0.0) or (%{py3_dist Sphinx} > 5.0.0 and %{py3_dist Sphinx} < 6))
+%endif
 BuildRequires:  %{py3_dist docutils} >= 0.12
 BuildRequires:  %{py3_dist Jinja2} >= 2.7.3
 BuildRequires:  %{py3_dist MarkupSafe} >= 0.23
