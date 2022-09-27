@@ -1,0 +1,11 @@
+--- ./setup.py.orig	2022-09-27 22:28:17.199596002 +0100
++++ ./setup.py	2022-09-27 22:28:31.967541206 +0100
+@@ -17,7 +17,7 @@ Breathe is an extension to reStructuredT
+  render `Doxygen <http://www.doxygen.org>`__ xml output.
+ """
+ 
+-requires = ["Sphinx>=4.0,<6,!=5.0.0", "docutils>=0.12"]
++requires = ["Sphinx", "docutils>=0.12"]
+ 
+ if sys.version_info < (3, 6):
+     print("ERROR: Sphinx requires at least Python 3.6 to run.")

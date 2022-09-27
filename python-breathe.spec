@@ -15,6 +15,8 @@ Source0:        %{URL}/archive/v%{version}.tar.gz
 Source1:        %{URL}/releases/download/v%{version}/%{srcname}-%{version}.tar.gz.sig
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8aed58021feacdd5f27ba0e6a72f627716ea9d96#./vermware.key
 
+Patch1:         rhel_sphinx.patch
+
 BuildArch:      noarch
 
 BuildRequires:  doxygen >= 1.8.4
@@ -61,7 +63,10 @@ This package contains documentation for developer documentation for %{srcname}.
 
 %prep
 %{gpgverify} --keyring='%{SOURCE2}' --signature='%{SOURCE1}' --data='%{SOURCE0}'
-%autosetup -n %{srcname}-%{version} -p1
+%setup -n %{srcname}-%{version}
+%if 0%{?rhel}
+%patch1 -p1
+%endif
 
 %build
 %py3_build
