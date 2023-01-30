@@ -6,7 +6,7 @@ render the Doxygen xml output.
 
 Name:           python-%{srcname}
 Version:        4.11.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Adds support for Doxygen xml output to reStructuredText and Sphinx
 
 License:        BSD
@@ -67,6 +67,9 @@ rm documentation/build/html/.buildinfo
 %license LICENSE
 
 %changelog
+* Mon Jan 30 2023 Miro Hrončok <mhroncok@redhat.com> - 4.11.1-2
+- Rebuilt to change Python shebangs to /usr/bin/python3.6 on EPEL 8
+
 * Fri Jul 15 2022 Davide Cavalca <dcavalca@fedoraproject.org> - 4.11.1-1
 - Update to 4.11.1 for epel8
 
